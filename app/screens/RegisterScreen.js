@@ -30,26 +30,26 @@ function RegisterScreen() {
 
   const handleSubmit = async (user_details) => {
     const result = await registerApi.request(user_details);
-    console.log({user_details});
-    console.log(result.data);
-    // console.log(result);
+     console.log({user_details});
+     
+    // console.log(result.data);
+    // console.log(result.data.data.message);
+    
 
-    if (!result) {
-        
-      if (result.data) setError(result.data.errors);
-      else {
-        setError("An unexpected error occurred.");
-        console.log(result);
-      }
-      return;
+    if (result.data.data.message) {
+
+        if (result.data.data) setError(result.data.data.message);
+        else {
+          setError("An unexpected error occurred.");
+          console.log(result);
+        }
+        return;
     }
 
-    const { data: authToken } = await loginApi.request(
-      user_details.email,
-      user_details.password,
-      
-    );
-    auth.logIn(authToken);
+      const loginresult = await authApi.login(user_details.email, user_details.password);
+      auth.logIn(loginresult.data.data.token);
+
+    
   };
 
   return (
