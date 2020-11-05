@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   },
   brand: {
     color: colors.blue,
+    fontWeight: "bold",
   },
 });
 
