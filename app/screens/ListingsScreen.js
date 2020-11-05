@@ -37,8 +37,10 @@ if(getListingsApi.data.data){
           keyExtractor={(listing) => listing.id.toString()}
           renderItem={({ item }) => (
             <Card
-              title={item.name}
-              subTitle={"$" + item.price}
+              title={"Item: "+item.name}
+              brand={"Brand: "+item.brand}
+              subTitle={"Price: $" + item.price}
+              category={"Category: "+item.category}
               imageUrl={item.images[0]}
               onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
               thumbnailUrl={item.images[0]}
