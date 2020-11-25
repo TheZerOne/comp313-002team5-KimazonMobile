@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
+import Button from "../components/Button";
+import routes from "../navigation/routes";
+
 
 import Screen from "../components/Screen";
 import {
@@ -17,7 +20,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function LoginScreen(props) {
+function LoginScreen(props,{navigation}) {
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
@@ -61,6 +64,12 @@ function LoginScreen(props) {
           textContentType="password"
         />
         <SubmitButton title="Login" />
+
+        <Button
+          title="Forgot Password"
+          color="secondary"
+          onPress={() => navigation.navigate(routes.REGISTER)}
+        />
       </Form>
     </Screen>
   );
