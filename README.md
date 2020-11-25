@@ -3,4 +3,4 @@ e- Commerce application using ReactNative
  
 install modules  -  npm i
  
-Start Module - expo start 
+Start application - expo start 
