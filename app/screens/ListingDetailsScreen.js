@@ -6,6 +6,7 @@ import {
   Platform,
   Keyboard,
 } from "react-native";
+import Picker from "@react-native-picker/picker";
 import { Image } from "react-native-expo-image-cache";
 
 import colors from "../config/colors";
@@ -24,7 +25,7 @@ function ListingDetailsScreen({ route }) {
     >
       <Image
         style={styles.image}
-        preview={{ uri: listing.images[0].thumbnailUrl }}
+        preview={{ uri: listing.images[0] }}
         tint="light"
         uri={listing.images[0].url}
       />
@@ -38,6 +39,7 @@ function ListingDetailsScreen({ route }) {
             subTitle="5 Listings"
           />
         </View>
+        
         <ContactSellerForm listing={listing} />
       </View>
     </KeyboardAvoidingView>
